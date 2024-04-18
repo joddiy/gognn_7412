@@ -66,7 +66,7 @@ tnf <- tnf[!duplicated(tnf$ENSEMBL),]
 tnf %>% head
 
 # save to csv
-write.csv(tnf, "../py/annotations-gene-GO.csv", row.names = FALSE)
-write.csv(t(counts1), "../py/counts1.csv", row.names = TRUE)
-write.csv(pheno1, "../py/pheno1.csv", row.names = TRUE)
+write.csv(tnf, "../data/annotations-gene-GO.csv", row.names = FALSE)
+write.csv(t(counts1), "../data/counts1.csv", row.names = TRUE)
+write.csv(pheno1, "../data/pheno1.csv", row.names = TRUE)
 
