@@ -60,11 +60,13 @@ counts1 %>% head
 # get the GO terms for the genes 
 ensemble_keys <- unique(rownames(counts1))
 tnf <- OrganismDbi::select(org.Hs.eg.db, keys=ensemble_keys, keytype="ENSEMBL", columns=c("ENTREZID", "GO"))
-tnf <- tnf[tnf$ONTOLOGY == "BP",]
+tnf <- tnf[tnf$ONTOLOGY == "BP", c("ENSEMBL", "GO")]
+# de-duplicate
+tnf <- tnf[!duplicated(tnf$ENSEMBL),]
 tnf %>% head
 
 # save to csv
-write.csv(tnf, "py/GO_BP.csv", row.names = FALSE)
-write.csv(t(counts1), "py/counts1.csv", row.names = TRUE)
-write.csv(pheno1, "py/pheno1.csv", row.names = TRUE)
+write.csv(tnf, "../py/annotations-gene-GO.csv", row.names = FALSE)
+write.csv(t(counts1), "../py/counts1.csv", row.names = TRUE)
+write.csv(pheno1, "../py/pheno1.csv", row.names = TRUE)
 
