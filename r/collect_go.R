@@ -12,12 +12,12 @@ library(OrganismDbi)
 
 #### reading count matrix
 library(data.table)
-counts = fread("GSE124326_count_matrix.txt.gz")
+counts = fread("../data/GSE124326_count_matrix.txt.gz")
 colnames(counts) <- sapply(colnames(counts), function(x){sub(".counts","",x)})
 counts[,1:3] %>% head
 
 ### reading phenotypic data
-pheno = fread("GSE124326_pheno.txt")
+pheno = fread("../data/GSE124326_pheno.txt")
 pheno %>% head
 
 #### Checking and mapping counts and phenotypic data
@@ -61,8 +61,6 @@ counts1 %>% head
 ensemble_keys <- unique(rownames(counts1))
 tnf <- OrganismDbi::select(org.Hs.eg.db, keys=ensemble_keys, keytype="ENSEMBL", columns=c("ENTREZID", "GO"))
 tnf <- tnf[tnf$ONTOLOGY == "BP", c("ENSEMBL", "GO")]
-# de-duplicate
-tnf <- tnf[!duplicated(tnf$ENSEMBL),]
 tnf %>% head
 
 # save to csv
