@@ -1,7 +1,8 @@
 # gognn_7412
 
-The dataset is too large to be uploaded. You can download the dataset from
-GitHub: https://github.com/joddiy/gognn_7412/tree/main/data
+We also uploaded the original dataset in the data folder. 
+
+You can download all the intermediate files from the following link: https://github.com/joddiy/gognn_7412/tree/main/data
 
 Also, You can directly clone the GitHub repository to get all codes and dataset.
 
